@@ -1,3 +1,5 @@
+import pandas as pd
+
 from cvrp import Cvrp
 from ga import GA
 
@@ -18,5 +20,11 @@ if __name__ == '__main__':
     cost = ga.get_calObj(chromosome, cvrp.customerLen, ga.cap, cvrp.demands, matrix, ga.alpha)
     # 计算适应度
     fitness = ga.fitness(cost)
+    # 选择操作
     selectCh = ga.select(chromosome, fitness, ga.generation_gap)
-
+    # 交叉操作
+    selectCh = ga.recombin(selectCh,ga.pc)
+    # 变异操作
+    selectCh = ga.mutate(selectCh, ga.pm)
+    # 局部搜索
+    selectCh = ga.localSearch(selectCh,cvrp.customerLen,ga.cap,cvrp.demands,matrix,ga.alpha)
