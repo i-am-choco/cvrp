@@ -6,6 +6,7 @@
 from importData import ImportData
 import numpy as np
 from scipy.spatial.distance import pdist, squareform
+import matplotlib.pyplot as plt
 
 
 class Cvrp:
@@ -44,5 +45,19 @@ class Cvrp:
         if data is not None:
             return squareform(data)
         return squareform(self.get_distance(None))
+
+    # 繪製坐標圖
+    def get_plot_coordinates(self):
+        x_coords = [point[0] for point in self.customer]
+        y_coords = [point[1] for point in self.customer]
+        plt.figure(2)
+        plt.scatter(self.distribution[0], self.distribution[1], color='red', s=100, zorder=5, label="Red Point")
+        plt.scatter(x_coords, y_coords, color='b', label='Points', marker='o')
+        plt.title('XY Coordinates Plot')
+        plt.xlabel('X-axis')
+        plt.ylabel('Y-axis')
+        plt.legend()
+        plt.grid()
+
 
 
