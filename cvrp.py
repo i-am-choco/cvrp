@@ -2,6 +2,7 @@
 @author：choco
 @description：gacvrp处理主类
 """
+from traceback import print_tb
 
 from importData import ImportData
 import numpy as np
@@ -46,6 +47,12 @@ class Cvrp:
             return squareform(data)
         return squareform(self.get_distance(None))
 
+    # 绘制成本图
+    def get_plot_best_cost(self, cost):
+        plt.figure(1)
+        plt.plot(cost)
+        plt.title('Plot 1')
+
     # 繪製坐標圖
     def get_plot_coordinates(self):
         x_coords = [point[0] for point in self.customer]
@@ -60,4 +67,19 @@ class Cvrp:
         plt.grid()
 
 
+    def get_plot_route_map(self,routes):
+        plt.figure(3)
+        colors = plt.cm.get_cmap('tab20', len(routes))
+        for i, route in enumerate(routes):
+            route_coords = self.customer[route-1]  # 获取路线的坐标
+            route_coords = np.vstack([self.distribution, route_coords, self.distribution])
+            x, y = route_coords[:, 0], route_coords[:, 1]  # 拆分为x和y
+            plt.plot(x, y, marker='o', label=f'Route {i + 1}', color=colors(i))
+            plt.text(x[0], y[0], "", color='green', fontsize=9)  # 起点标记
+            plt.text(x[-1], y[-1], "", color='red', fontsize=9)  # 终点标记
+        plt.legend()
+        plt.title("VRP Route Map")
+        plt.xlabel("X-coordinate")
+        plt.ylabel("Y-coordinate")
+        plt.grid()
 

@@ -11,6 +11,8 @@ if __name__ == '__main__':
     ga = GA()
     # 最优成本
     bestCost = []
+    # 最优路线
+    bestVC = []
     # 计算各行向量之间的欧式距离
     distance = cvrp.get_distance(None)
     # 得出距离矩阵
@@ -31,7 +33,7 @@ if __name__ == '__main__':
     """
         ga循环
     """
-    for i in range(0, 10):
+    for i in range(0, 200):
         # 计算成本
         cost = ga.get_calObj(chromosome, cvrp.customerLen, ga.cap, cvrp.demands, matrix, ga.alpha)
         # 计算适应度
@@ -54,13 +56,15 @@ if __name__ == '__main__':
         bestCost.append(minCost)
         minIndex = np.where(cost == minCost)[0][0]
         currVC, nv, td, violate_num, violate_cus = ga.decode(chromosome[:, minIndex], cvrp.customerLen, ga.cap, cvrp.demands, matrix)
+        bestVC = currVC
         print("第" + str(i+1) + "代最优解: \n" + '车辆使用数目: ' + str(nv) + '，车辆行驶总距离：' + str(td) + '，违反约束路径数目：' + str(
             violate_num) + '，违反约束顾客数目：' + str(violate_cus))
         print('\n成本：' + str(minCost))
         print('###')
-
-    plt.figure(1)
-    plt.plot(bestCost)
-    plt.title('Plot 1')
+    """
+        结果可视化
+    """
+    cvrp.get_plot_route_map(bestVC)
+    cvrp.get_plot_best_cost(bestCost)
     cvrp.get_plot_coordinates()
     plt.show()

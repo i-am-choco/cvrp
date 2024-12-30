@@ -10,7 +10,7 @@ class GA:
         # 最大承重
         self.cap = 100
         # 违反的容量约束的惩罚函数系数
-        self.alpha = 10
+        self.alpha = 200
         # 种群大小
         self.nind = 50
         # 迭代次数
@@ -23,17 +23,6 @@ class GA:
         self.generation_gap = 0.9
         # 染色体长度=顾客数目+车辆最多使用数目-1
         self.chromosome_size = 0
-        # self.gla = ContinuousGenAlgSolver(
-        #     n_genes=100,
-        #     fitness_function=self.get_fitness,
-        #     max_gen=self.maxgen,
-        #     pop_size=self.nind,
-        #     mutation_rate=self.pm,
-        #     selection_rate=self.pc,
-        #     variables_limits=(0, self.nind)
-        # )
-        # chrome = gla.initialize_population()
-        # print(gla.calculate_fitness())
 
     # 更新染色体长度
     def update_choromsome_size(self, size):
@@ -507,7 +496,7 @@ class GA:
             # 最大承重
             self.cap = 100
             # 违反的容量约束的惩罚函数系数
-            self.alpha = 10
+            self.alpha = 200
             # 种群大小
             self.nind = 50
             # 迭代次数
@@ -520,17 +509,6 @@ class GA:
             self.generation_gap = 0.9
             # 染色体长度=顾客数目+车辆最多使用数目-1
             self.chromosome_size = 0
-            # self.gla = ContinuousGenAlgSolver(
-            #     n_genes=100,
-            #     fitness_function=self.get_fitness,
-            #     max_gen=self.maxgen,
-            #     pop_size=self.nind,
-            #     mutation_rate=self.pm,
-            #     selection_rate=self.pc,
-            #     variables_limits=(0, self.nind)
-            # )
-            # chrome = gla.initialize_population()
-            # print(gla.calculate_fitness())
 
         # 更新染色体长度
         def update_choromsome_size(self, size):
