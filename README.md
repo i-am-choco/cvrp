@@ -41,7 +41,7 @@ This project uses GA algorithm to solve the CVRP problem in an idealized scenari
 
 - There are $n$ customer data, where $i$ is the customer number
 
-  - Treat each customer coordinate as a two-dimensional vector, $v_i$=[$x_i, y_i$]
+  - Treat each customer coordinate as a two-dimensional vector, $v_i$ =[ $x_i$ , $y_i$ ]
 
   - So many customers form a coordinate matrix $V$
 
@@ -75,19 +75,15 @@ This project uses GA algorithm to solve the CVRP problem in an idealized scenari
 
 - Path representation vectorization $P$
 
-  The total distance of a path $P$ = [$0$, $i_1$, $i_2$, $i_3$, ..., $i_n$, $0$] can be expressed as
+  The total distance of a path $P$ = [ $0$ , $i_1$, $i_2$, $i_3$, ..., $i_n$, $0$] can be expressed as
 
-  $$
-  L(P) = \sum_{t=1}^{k} d_{i_t, i_{t+1}}
-  $$
+  $$L(P) = \sum_{t=1}^{k} d_{i_t, i_{t+1}}$$
 
-  Define path index vector $p$=[$O$, $i_1$, $i_2$, ..., $i_n$, $O$]
+  Define path index vector $p$=[ $O$ , $i_1$, $i_2$, ..., $i_n$, $O$]
 
   Combining the distance matrix $D$ with the path index vector $p$, we have the expression
 
-  $$
-  L(P) = \sum_{t=1}^{k}D_{p_|t|,p_{t+1}|}
-  $$
+  $$L(P) = \sum_{t=1}^{k}D_{p_|t|,p_{t+1}|}$$
 
   Where
 
@@ -99,19 +95,15 @@ This project uses GA algorithm to solve the CVRP problem in an idealized scenari
 
 - Capacity constraint vectorization $Q$
 
-  Each customer's demand is $q$ = [$q_1$, $q_2$,$q_3$,..., $q_n$], and the vehicle capacity is $Q$.
+  Each customer's demand is $q$ = [ $q_1$ , $q_2$ , $q_3$ ,..., $q_n$ ], and the vehicle capacity is $Q$.
 
   The total demand for path $P$ can be expressed as
 
-  $$
-  Q(P) = \sum_{i \in P} q_i
-  $$
+  $$Q(P) = \sum_{i \in P} q_i$$
 
   The capacity constraint is:
 
-  $$
-  Q(P) \leq Q
-  $$
+  $$Q(P) \leq Q$$
 
 ### 3. Project Results
 
