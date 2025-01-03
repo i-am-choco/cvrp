@@ -10,15 +10,15 @@ class GA:
         # 最大承重
         self.cap = 100
         # 违反的容量约束的惩罚函数系数
-        self.alpha = 200
+        self.alpha = 10
         # 种群大小
         self.nind = 50
         # 迭代次数
-        self.maxgen = 200
+        self.maxgen = 400
         # 交叉概率
-        self.pc = 0.9
+        self.pc = 0.7
         # 变异概率
-        self.pm = 0.05
+        self.pm = 0.02
         # 代沟(Generation gap)
         self.generation_gap = 0.9
         # 染色体长度=顾客数目+车辆最多使用数目-1

@@ -33,7 +33,7 @@ if __name__ == '__main__':
     """
         ga循环
     """
-    for i in range(0, 200):
+    for i in range(0, ga.maxgen):
         # 计算成本
         cost = ga.get_calObj(chromosome, cvrp.customerLen, ga.cap, cvrp.demands, matrix, ga.alpha)
         # 计算适应度
